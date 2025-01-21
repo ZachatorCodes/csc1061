@@ -13,7 +13,6 @@ public class Reverse {
     private static void reverse(int[] list) {
     	// i < j
     	int reps = 0;
-    	System.out.println(reps);
         for (int i = 0, j = list.length - 1; i < list.length / 2; i++, j--) {
             // swap list[i] with list[j]
             int temp = list[i];
@@ -21,6 +20,7 @@ public class Reverse {
             list[j] = temp;
             reps++;
         }
+        System.out.println(reps);
     }
     
     public static void main(String[] args){
