@@ -14,10 +14,10 @@ public class Reverse {
     	// i < j
     	int reps = 0;
     	System.out.println(reps);
-        for (int i = 0, j = list.length - 1; i < list.length; i++, j--) {
+        for (int i = 0, j = list.length - 1; i < list.length / 2; i++, j--) {
             // swap list[i] with list[j]
             int temp = list[i];
-            list[i] = list[j];
+            list[i] = list[j];		
             list[j] = temp;
             reps++;
         }
