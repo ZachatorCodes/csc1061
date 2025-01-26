@@ -43,8 +43,9 @@ public class HangMan {
 				mistakes++;
 			}
 
-			if (display.equals(word))
+			if (display.equals(word)) {
 				win = true;
+			}
 		}
 		System.out.printf("The word is %s. You missed %d time(s)\n", word, mistakes);
 	}
