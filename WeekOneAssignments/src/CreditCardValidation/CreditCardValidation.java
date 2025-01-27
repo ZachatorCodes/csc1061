@@ -2,6 +2,11 @@ package CreditCardValidation;
 
 import java.util.Scanner;
 
+/**
+ * @author Zach Schwartz, S03100100
+ * @version2025-1-26, CSC-1061 Assignment 1, Exercise 1
+ */
+
 public class CreditCardValidation {
 
 	public static void main(String[] args) {

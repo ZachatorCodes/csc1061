@@ -3,6 +3,11 @@ package HangMan;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * @author Zach Schwartz, S03100100
+ * @version2025-1-26, CSC-1061 Assignment 1, Exercise 2
+ */
+
 public class HangMan {
 	public static void main(String[] args) {
 		boolean newGame = true;
