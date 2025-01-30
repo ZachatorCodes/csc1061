@@ -77,10 +77,10 @@ public class TurtleGraphics {
 			// determine what command was entered
 			// and perform desired action
 			switch (command) {
-			case 1: // pen down
+			case 1: // pen up
 				penDown = false;
 				break;
-			case 2: // pen up
+			case 2: // pen down
 				penDown = true;
 				break;
 			case 3: // turn right
@@ -140,10 +140,20 @@ public class TurtleGraphics {
 
 		case 1: // move down
 			// To be completed by student.
+			for (j = 1; j <= dist && xPos - j < SIZE; ++j)
+				if (down)
+					a[xPos + j][yPos] = 1;
+
+			xPos += j - 1;
 			break;
 
 		case 2: // move to left
 			// To be completed by student.
+			for (j = 1; j <= dist && yPos + j >= 0; ++j)
+				if (down)
+					a[xPos][yPos - j] = 1;
+
+			yPos -= j - 1;
 			break;
 
 		case 3: // move up
