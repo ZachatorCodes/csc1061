@@ -4,11 +4,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * Class to test class Turtle Program. Drawing turtle graphics based on turtle
- * commands.
- * 
- * @author Deitel 10e chapter 7
- * @version CSC160 CSC 1 2020 Robert Gilanyi, Instructor
+ * @author Zach Schwartz, S03100100
+ * @version 2025-1-30, CSC-1061 Assignment 1, Exercise 3
  */
 public class TurtleGraphics {
 	private static final int SIZE = 20; // size of the drawing area
