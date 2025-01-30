@@ -168,7 +168,11 @@ public class TurtleGraphics {
 		// display array
 		for (int i = 0; i < SIZE; ++i) {
 			// To be completed by student.
-			System.out.println(Arrays.toString(a[i]));
+			for (int j = 0; j < SIZE; j++) {
+				if (a[i][j] == 0) System.out.print(" ");
+				else System.out.print("*");
+			}
+			System.out.println();
 		}
 	}
 } // end class TurtleGraphics
