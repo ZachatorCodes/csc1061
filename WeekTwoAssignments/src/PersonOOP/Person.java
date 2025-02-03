@@ -3,6 +3,9 @@ package PersonOOP;
 import static java.lang.System.out;
 
 /**
+ * @author Zach Schwartz, S03100100
+ * @version 2025-2-2, CSC-1061 Assignment 2
+ * 
  * Person class, to meet the requirements stated in the Assignment Instructions
  * for Assignment.
  * <p>
