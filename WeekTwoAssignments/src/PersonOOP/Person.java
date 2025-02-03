@@ -91,9 +91,9 @@ public class Person {
 	 * @param initialAge Person's initial age in years
 	 */
 	public Person(String firstName, String lastName, double initialAge) {
-		this.firstNameField = firstName;
-		this.lastNameField = lastName;
-		this.ageField = initialAge;
+		setFirst(firstName);
+		setLast(lastName);
+		setAge(initialAge);
 	}
 
 	/**
@@ -118,11 +118,11 @@ public class Person {
 	 * @param firstName Person's first name (assuming Western World naming).
 	 */
 	public void setFirst(String firstName) {
-		if (firstName.length() > 0) {
-			this.firstNameField = firstName;
+		if (firstName != null && firstName.length() > 0) {
+			firstNameField = firstName;
 		}
 		else {
-			this.firstNameField = null;
+			firstNameField = null;
 		}
 	}
 
@@ -141,11 +141,11 @@ public class Person {
 	 * @param lastName Person's last name (assuming Western World naming).
 	 */
 	public void setLast(String lastName) {
-		if (lastName.length() > 0) {
-			this.lastNameField = lastName;
+		if (lastName != null && lastName.length() > 0) {
+			lastNameField = lastName;
 		}
 		else {
-			this.lastNameField = null;
+			lastNameField = null;
 		}
 	}
 
@@ -156,7 +156,10 @@ public class Person {
 	 */
 	public void setAge(double age) {
 		if (age >= 0) {
-			this.ageField = age;
+			ageField = age;
+		}
+		else {
+			ageField = 0;
 		}
 	}
 
@@ -166,7 +169,7 @@ public class Person {
 	 * @return Person's age.
 	 */
 	public double getAge() {
-		return this.ageField;
+		return ageField;
 	}
 
 	/**
