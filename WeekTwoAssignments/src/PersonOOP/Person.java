@@ -182,7 +182,6 @@ public class Person {
 	 */
 	@Override
 	public String toString() {
-		return "Person [firstNameField=" + firstNameField + ", lastNameField=" + lastNameField + ", ageField="
-				+ ageField + "]";
+		return super.toString() + "\u0020" + firstNameField + " " + lastNameField;
 	}
 }
