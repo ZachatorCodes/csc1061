@@ -49,7 +49,8 @@ public class CommissionEmployee extends Employee {
 	}
 
 	// calculate earnings;
-	public double earnings() {
+	@Override
+	public double getPaymentAmount() {
 		return getCommissionRate() * getGrossSales();
 	}
 
