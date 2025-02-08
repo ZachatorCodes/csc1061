@@ -24,9 +24,11 @@ public class AccountsPayable {
 			// special processing for instance of class BasePlusCommissionEmployee
 			if (currentPayable instanceof BasePlusCommissionEmployee) {
 				// remember: need to downcast Payable reference to BasePlusCommissionEmployee
+				BasePlusCommissionEmployee bpcEmployee = (BasePlusCommissionEmployee) currentPayable;
+				bpcEmployee.setBaseSalary(bpcEmployee.getBaseSalary() * 1.1);
 				// reference
 				// print new base salary with 10%% increase
-				System.out.printf("new base salary with 10%% increase is: ");
+				System.out.printf("new base salary with 10%% increase is: %.2f\n", bpcEmployee.getBaseSalary());
 			} // end if
 
 			System.out.printf("%s: $%,.2f\n\n", "payment due", currentPayable.getPaymentAmount());
