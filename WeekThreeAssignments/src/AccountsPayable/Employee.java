@@ -3,62 +3,52 @@ package AccountsPayable;
 // Employee.java
 // Employee abstract superclass implements Payable.
 
-public class Employee extends Payable
-{
-   private String firstName;
-   private String lastName;
-   private String socialSecurityNumber;
+public class Employee extends Payable {
+	private String firstName;
+	private String lastName;
+	private String socialSecurityNumber;
 
-   // three-argument constructor
-   public Employee(String first, String last, String ssn)
-   {
-      firstName = first;
-      lastName = last;
-      socialSecurityNumber = ssn;
-   } // end three-argument Employee constructor
+	// three-argument constructor
+	public Employee(String first, String last, String ssn) {
+		firstName = first;
+		lastName = last;
+		socialSecurityNumber = ssn;
+	} // end three-argument Employee constructor
 
-   // set first name
-   public void setFirstName(String first)
-   {
-      firstName = first; // should validate
-   } // end method setFirstName
+	// set first name
+	public void setFirstName(String first) {
+		firstName = first; // should validate
+	} // end method setFirstName
 
-   // return first name
-   public String getFirstName()
-   {
-      return firstName;
-   } // end method getFirstName
+	// return first name
+	public String getFirstName() {
+		return firstName;
+	} // end method getFirstName
 
-   // set last name
-   public void setLastName(String last)
-   {
-      lastName = last; // should validate
-   } // end method setLastName
+	// set last name
+	public void setLastName(String last) {
+		lastName = last; // should validate
+	} // end method setLastName
 
-   // return last name
-   public String getLastName()
-   {
-      return lastName;
-   } // end method getLastName
+	// return last name
+	public String getLastName() {
+		return lastName;
+	} // end method getLastName
 
-   // set social security number
-   public void setSocialSecurityNumber(String ssn)
-   {
-      socialSecurityNumber = ssn; // should validate
-   } // end method setSocialSecurityNumber
+	// set social security number
+	public void setSocialSecurityNumber(String ssn) {
+		socialSecurityNumber = ssn; // should validate
+	} // end method setSocialSecurityNumber
 
-   // return social security number
-   public String getSocialSecurityNumber()
-   {
-      return socialSecurityNumber;
-   } // end method getSocialSecurityNumber
+	// return social security number
+	public String getSocialSecurityNumber() {
+		return socialSecurityNumber;
+	} // end method getSocialSecurityNumber
 
-   // return String representation of Employee object
-   @Override
-   public String toString()
-   {
-      return String.format("%s %s\nsocial security number: %s", 
-         getFirstName(), getLastName(), getSocialSecurityNumber());
-   } // end method toString
+	// return String representation of Employee object
+	@Override
+	public String toString() {
+		return String.format("%s %s\nsocial security number: %s", getFirstName(), getLastName(),
+				getSocialSecurityNumber());
+	} // end method toString
 } // end class Employee
-
