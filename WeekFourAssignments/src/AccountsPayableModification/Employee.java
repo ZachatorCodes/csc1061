@@ -4,9 +4,6 @@ package AccountsPayableModification;
 // Employee abstract superclass that implements Payable.
 
 public abstract class Employee implements Payable {
-	// I don't understand why these variables are final. Why would you need a setter
-	// for final variables?
-
 	// NOTE: I removed final variable to make code work
 	private /* final */ String firstNameField;
 	private /* final */ String lastNameField;
@@ -68,9 +65,9 @@ public abstract class Employee implements Payable {
 		return earnings();
 	}
 	
-	abstract double earnings();
 	// Note: We do not implement Payable method getPaymentAmount here so
 	// this class must be declared abstract to avoid a compilation error.
+	abstract double earnings();
 
 } // end abstract class Employee
 
