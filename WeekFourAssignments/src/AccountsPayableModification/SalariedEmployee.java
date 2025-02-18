@@ -35,11 +35,9 @@ public class SalariedEmployee extends Employee {
 		return String.format("salaried employee: %s%n%s: $%,.2f", super.toString(), "weekly salary", getWeeklySalary());
 	}
 
-	@Override
 	// Had to add this method to this class to avoid an error since it says do not
 	// implement this method in Employee
-	public double getPaymentAmount() {
-		// TODO Auto-generated method stub
+	public double earnings() {
 		return weeklySalary;
 	}
 

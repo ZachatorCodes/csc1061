@@ -14,8 +14,8 @@ public abstract class Employee implements Payable {
 
 	// constructor
 	public Employee(String firstName, String lastName, String socialSecurityNumber) {
-		this.firstNameField = firstName;
-		this.lastNameField = lastName;
+		setFirst(firstName);
+		setLast(lastName);
 		this.socialSecurityNumberField = socialSecurityNumber;
 	}
 
@@ -23,8 +23,8 @@ public abstract class Employee implements Payable {
 		if (firstName == null) {
 			this.firstNameField = null;
 		}
-		else if (firstName.length() <= 0) {
-			this.firstNameField = "";
+		else if (firstName.isEmpty()) {
+			this.firstNameField = null;
 		}
 		else {
 			this.firstNameField = firstName;
@@ -36,7 +36,7 @@ public abstract class Employee implements Payable {
 			this.lastNameField = null;
 		}
 		else if (lastName.length() <= 0) {
-			this.lastNameField = "";
+			this.lastNameField = null;
 		}
 		else {
 			this.lastNameField = lastName;
@@ -63,7 +63,12 @@ public abstract class Employee implements Payable {
 	public String toString() {
 		return String.format("%s %s | %s", firstNameField, lastNameField, socialSecurityNumberField);
 	}
-
+	
+	public double getPaymentAmount() {
+		return earnings();
+	}
+	
+	abstract double earnings();
 	// Note: We do not implement Payable method getPaymentAmount here so
 	// this class must be declared abstract to avoid a compilation error.
 
