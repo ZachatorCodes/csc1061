@@ -1,0 +1,8 @@
+Value of "1234" is 1234 
+Value of "921" is 921 
+Value of "0" is 0 
+Value of "0034" is 34 
+Value of "-4" is -4 
+Value of "-400001" is -400001 
+? Invalid numeric string detected starting at ABC
+Value of "ABC" is 0
