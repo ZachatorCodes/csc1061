@@ -20,7 +20,7 @@ public class MyLinkedList<E> implements MyList<E> {
 		}
 	}
 
-	private Node<E> head, tail;
+	private Node<E> tail;
 	private int size = 0; // Number of elements in the list
 
 	/** Create an empty list */
@@ -38,7 +38,7 @@ public class MyLinkedList<E> implements MyList<E> {
 		if (size == 0) {
 			return null;
 		} else {
-			return head.element;
+			return tail.element;
 		}
 	}
 
