@@ -37,8 +37,10 @@ public class MyLinkedList<E> implements MyList<E> {
 	public E getFirst() {
 		if (size == 0) {
 			return null;
-		} else {
+		} else if (size == 1) {
 			return tail.element;
+		} else {
+			return tail.next.element;
 		}
 	}
 
@@ -54,26 +56,29 @@ public class MyLinkedList<E> implements MyList<E> {
 	/** Add an element to the beginning of the list */
 	public void addFirst(E e) {
 		Node<E> newNode = new Node<>(e); // Create a new node
-		newNode.next = head; // link the new node with the head
-		head = newNode; // head points to the new node
-		size++; // Increase list size
+		if (tail == null) {
+			tail = newNode;
+			size++;
+		} else {
+			newNode.next = tail.next; // link the new node with the head
+			tail.next = newNode; // head points to the new node
+			size++; // Increase list size
+		}
 
-		if (tail == null) // the new node is the only node in list
-			tail = head;
 	}
 
 	/** Add an element to the end of the list */
 	public void addLast(E e) {
 		Node<E> newNode = new Node<>(e); // Create a new for element e
-
 		if (tail == null) {
-			head = tail = newNode; // The new node is the only node in list
+			tail = newNode;
+			size++; // Increase size
 		} else {
-			tail.next = newNode; // Link the new with the last node
-			tail = newNode; // tail now points to the last node
+			newNode.next = tail.next;
+			tail = newNode;
+			size++;
 		}
 
-		size++; // Increase size
 	}
 
 	/**
@@ -87,7 +92,7 @@ public class MyLinkedList<E> implements MyList<E> {
 		} else if (index >= size) {
 			addLast(e);
 		} else {
-			Node<E> current = head;
+			Node<E> current = tail;
 			for (int i = 1; i < index; i++) {
 				current = current.next;
 			}
@@ -106,10 +111,10 @@ public class MyLinkedList<E> implements MyList<E> {
 		if (size == 0) {
 			return null;
 		} else {
-			E temp = head.element;
-			head = head.next;
+			E temp = tail.next.element;
+			tail.next.element = tail.element;
 			size--;
-			if (head == null) {
+			if (tail == null) {
 				tail = null;
 			}
 			return temp;
@@ -124,12 +129,12 @@ public class MyLinkedList<E> implements MyList<E> {
 		if (size == 0) {
 			return null;
 		} else if (size == 1) {
-			E temp = head.element;
-			head = tail = null;
+			E temp = tail.element;
+			tail = tail.next = null;
 			size = 0;
 			return temp;
 		} else {
-			Node<E> current = head;
+			Node<E> current = tail.next;
 
 			for (int i = 0; i < size - 2; i++) {
 				current = current.next;
@@ -156,7 +161,7 @@ public class MyLinkedList<E> implements MyList<E> {
 		} else if (index == size - 1) {
 			return removeLast();
 		} else {
-			Node<E> previous = head;
+			Node<E> previous = tail;
 
 			for (int i = 1; i < index; i++) {
 				previous = previous.next;
@@ -174,17 +179,22 @@ public class MyLinkedList<E> implements MyList<E> {
 	public String toString() {
 		StringBuilder result = new StringBuilder("[");
 
-		Node<E> current = head;
+		Node<E> current = null;
+		if (size == 1) {
+			current = tail;
+		}
+		else {
+			current = tail.next;
+		}
 		for (int i = 0; i < size; i++) {
 			result.append(current.element);
 			current = current.next;
 			if (current != null) {
 				result.append(", "); // Separate two elements with a comma
-			} else {
-				result.append("]"); // Insert the closing ] in the string
 			}
 		}
 
+		result.append("]"); // Insert the closing ] in the string
 		return result.toString();
 	}
 
@@ -192,7 +202,7 @@ public class MyLinkedList<E> implements MyList<E> {
 	@Override
 	public void clear() {
 		size = 0;
-		head = tail = null;
+		tail = null;
 	}
 
 	/** Return true if this list contains the element e */
@@ -246,7 +256,7 @@ public class MyLinkedList<E> implements MyList<E> {
 	}
 
 	private class LinkedListIterator implements java.util.Iterator<E> {
-		private Node<E> current = head; // Current index
+		private Node<E> current = tail; // Current index
 
 		@Override
 		public boolean hasNext() {
