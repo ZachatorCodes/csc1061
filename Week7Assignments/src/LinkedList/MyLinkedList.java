@@ -37,11 +37,8 @@ class Node<E> {
     if (size == 0) {
       return null;
     }
-    if (size == 1) {
-    	return tail.element;
-    }
     else {
-      return tail.next.element;
+      return head.element;
     }
   }
 
@@ -58,30 +55,26 @@ class Node<E> {
   /** Add an element to the beginning of the list */
   public void addFirst(E e) {
     Node<E> newNode = new Node<>(e); // Create a new node
-    
-    if (size == 0) {
-    	tail = newNode;
-    }
-    else if (size == 1) {
-    	tail.next = newNode;
-    	newNode.next = tail;
-    }
-    else {
-    	newNode.next = tail.next; // link the new node with the head
-    	tail.next = newNode; // head points to the new node
-    }
-    
+    newNode.next = head; // link the new node with the head
+    head = newNode; // head points to the new node
     size++; // Increase list size
 
+    if (tail == null) // the new node is the only node in list
+      tail = head;
   }
 
   /** Add an element to the end of the list */
   public void addLast(E e) {
     Node<E> newNode = new Node<>(e); // Create a new for element e
-    if (size != 0) {
-    	newNode.next = tail;
+
+    if (tail == null) {
+      head = tail = newNode; // The new node is the only node in list
     }
-    tail = newNode;
+    else {
+      tail.next = newNode; // Link the new with the last node
+      tail = newNode; // tail now points to the last node
+    }
+
     size++; // Increase size
   }
 
@@ -202,7 +195,7 @@ class Node<E> {
   @Override 
   public void clear() {
     size = 0;
-    tail = null;
+    head = tail = null;
   }
 
   /** Return true if this list contains the element e */
