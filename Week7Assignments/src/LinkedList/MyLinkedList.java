@@ -264,17 +264,19 @@ public class MyLinkedList<E> implements MyList<E> {
 
 	private class LinkedListIterator implements java.util.Iterator<E> {
 		private Node<E> current = tail.next;
+		private int index = 0;
 		// NEED HELP HERE
 		@Override
 		public boolean hasNext() {
-			return current != tail;
+			return index < size;
 		}
 
 		@Override
 		public E next() {
 			E e = current.element;
 			current = current.next;
-			return e;
+			index++;
+			return e;	
 		}
 
 		@Override
