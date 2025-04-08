@@ -41,7 +41,7 @@ public class TestMyDeque {
     while (itr.hasNext()) {
       System.out.print(itr.next().toUpperCase() + " ");
     }
-    list.add(0,"Nowhere"); //this instruction should not compile!!
+//    list.add(0,"Nowhere"); //this instruction should not compile!!
     System.out.println("(6) " + list);
     
     list.clear();
