@@ -1,11 +1,11 @@
 package MyDeque;
 
-public class MyDeque<E> implements Deque<E> {
+public class MyDeque<E> extends MyLinkedList<E> implements Deque<E>  {
 
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 
 	@Override
