@@ -10,8 +10,6 @@ public class BinarySearchTest {
 	// perform a binary search on the data
 	public static int binarySearch(int[] data, int low, int high, int key) {
 		int middle = (low + high + 1) / 2; // middle element
-		int location = -1; // return value; -1 if not found
-
 		if (high >= low) {
 			if (data[middle] == key) {
 				return middle;
@@ -22,9 +20,7 @@ public class BinarySearchTest {
 				return binarySearch(data, middle + 1, high, key);
 			}
 		}
-		
 		return -1;
-
 	} // end method binarySearch
 
 	// method to output certain values in array
