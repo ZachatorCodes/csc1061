@@ -1,5 +1,9 @@
 package BSTEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class BST<E extends Comparable<E>> implements Tree<E> {
 	protected TreeNode<E> root;
 	protected int size = 0;
@@ -120,6 +124,54 @@ public class BST<E extends Comparable<E>> implements Tree<E> {
 		public TreeNode(E e) {
 			element = e;
 		}
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(root, size);
+	}
+
+	public ArrayList<E> inorderlist(TreeNode<E> root, ArrayList<E> list) {
+		if (root == null) {
+			return list;
+		}
+		inorderlist(root.left, list);
+		list.add(root.element);
+		inorderlist(root.right, list);
+
+		return list;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+
+		ArrayList<E> list1 = inorderlist(root, new ArrayList<E>());
+
+		BST<E> objBST = (BST<E>) obj;
+		ArrayList<E> list2 = inorderlist(objBST.getRoot(), new ArrayList<E>());
+
+		if (size != objBST.size) {
+			return false;
+		}
+		boolean works = true;
+
+		for (int i = 0; i < list1.size(); i++) {
+			if (list1.get(i) != list2.get(i)) {
+				works = false;
+			}
+		}
+
+		return works;
+
 	}
 
 	@Override /** Get the number of nodes in the tree */

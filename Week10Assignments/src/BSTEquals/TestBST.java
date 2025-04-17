@@ -32,7 +32,14 @@ public class TestBST {
 
 		Integer[] numbers = { 2, 4, 3, 1, 8, 5, 6, 7 };
 		BST<Integer> intTree = new BST<>(numbers);
+
+		Integer[] numbers2 = { 2, 4, 3, 1, 8, 5, 7, 6 };
+		BST<Integer> intTree2 = new BST<>(numbers2);
 		System.out.print("\nInorder (sorted): ");
 		intTree.inorder();
+
+		System.out.println();
+		System.out.println(intTree.equals(intTree2));
+
 	}
 }
