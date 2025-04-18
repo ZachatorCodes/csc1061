@@ -346,7 +346,8 @@ public class Tree24<E extends Comparable<E>> implements Tree<E> {
 	}
 
 	public void inorder(Tree24Node<E> root) {
-
+		if (root == null)
+			return;
 	}
 
 	/** Postorder traversal from the root */
@@ -355,7 +356,8 @@ public class Tree24<E extends Comparable<E>> implements Tree<E> {
 	}
 
 	public void postorder(Tree24Node<E> root) {
-
+		if (root == null)
+			return;
 	}
 
 	@Override /** Return true if the tree is empty */
