@@ -43,7 +43,7 @@ public class AVLPerformanceTest {
 		long end = System.nanoTime();
 		long totalTime = end - start;
 
-		System.out.printf("BUILD SUCESSFUL (total execution time: %d nanoseconds");
+		System.out.printf("BUILD SUCESSFUL (total execution time: %d nanoseconds", totalTime);
 	}
 
 	public static void test(Integer[] array) {
