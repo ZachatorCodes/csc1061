@@ -31,64 +31,75 @@ public class AVLPerformanceTest {
 		Arrays.sort(power5);
 		Arrays.sort(power6);
 
-		// Test 10 Elements
+		long start = System.nanoTime();
+
+		test(power1);
+		test(power2);
+		test(power3);
+		test(power4);
+		test(power5);
+		test(power6);
+
+		long end = System.nanoTime();
+		long totalTime = end - start;
+
+		System.out.printf("BUILD SUCESSFUL (total execution time: %d nanoseconds");
+	}
+
+	public static void test(Integer[] array) {
 		System.out.println("Tree creation through constructor(E[] objects)");
-		BST<Integer> bst1 = constructBST(power1);
-		AVLTree<Integer> avl1 = constructAVL(power1);
+		BST<Integer> bst = constructBST(array);
+		AVLTree<Integer> avl = constructAVL(array);
+
 		System.out.println();
-		// Search For 10 Elements
+
 		System.out.println("Average element search time comparison");
-		System.out.printf("BST average search execution time for %d elements is %d nanoseconds\n", bst1.size, searchBST(bst1, power1));
-		System.out.printf("AVL average search execution time for %d elements is %d nanoseconds\n", avl1.size, searchAVL(avl1, power1));
-		System.out.println();
-		
-		// Test 100 Elements
-		System.out.println("Tree creation through constructor(E[] objects)");
-		BST<Integer> bst2 = constructBST(power2);
-		AVLTree<Integer> avl2 = constructAVL(power2);
-		System.out.println();
-		// Search For 100 Elements
-		System.out.println("Average element search time comparison");
-		System.out.printf("BST average search execution time for %d elements is %d nanoseconds\n", bst2.size, searchBST(bst2, power2));
-		System.out.printf("AVL average search execution time for %d elements is %d nanoseconds\n", avl2.size, searchAVL(avl2, power2));
+		searchTree(bst, array);
+		searchTree(avl, array);
+
 		System.out.println();
 	}
-	
-	public static long searchBST(BST<Integer> bst, Integer[] arr) {
+
+	public static void searchTree(Tree<Integer> tree, Integer[] arr) {
 		long totalSearchTime = 0;
-		for (int i = 0; i < bst.size(); i++) {
-			long startTime = System.nanoTime();
-			bst.search(arr[i]);
-			long endTime = System.nanoTime();
-			totalSearchTime += endTime - startTime;
+		if (tree instanceof AVLTree) {
+			AVLTree<Integer> bst = (AVLTree<Integer>) tree;
+			for (int i = 0; i < bst.size(); i++) {
+				long startTime = System.nanoTime();
+				bst.search(arr[i]);
+				long endTime = System.nanoTime();
+				totalSearchTime += (endTime - startTime);
+			}
+			System.out.printf("BST average search execution time for %d elements is %d nanoseconds\n", tree.size(),
+					totalSearchTime / arr.length);
+		} else {
+			BST<Integer> avl = (BST<Integer>) tree;
+			for (int i = 0; i < avl.size(); i++) {
+				long startTime = System.nanoTime();
+				avl.search(arr[i]);
+				long endTime = System.nanoTime();
+				totalSearchTime += (endTime - startTime);
+			}
+			System.out.printf("AVL average search execution time for %d elements is %d nanoseconds\n", tree.size(),
+					totalSearchTime / arr.length);
 		}
-		return totalSearchTime / bst.size();
-	}
-	
-	public static long searchAVL(AVLTree<Integer> avl, Integer[] arr) {
-		long totalSearchTime = 0;
-		for (int i = 0; i < avl.size(); i++) {
-			long startTime = System.nanoTime();
-			avl.search(arr[i]);
-			long endTime = System.nanoTime();
-			totalSearchTime += endTime - startTime;
-		}
-		return totalSearchTime / avl.size();
 	}
 
 	public static BST<Integer> constructBST(Integer[] arr) {
 		long populateStart = System.nanoTime();
 		BST<Integer> bst = new BST<Integer>(arr);
 		long populateEnd = System.nanoTime();
-		System.out.printf("BST constructor() execution time for %d elements is %d nanoseconds\n", arr.length, populateEnd - populateStart);
+		System.out.printf("BST constructor() execution time for %d elements is %d nanoseconds\n", arr.length,
+				populateEnd - populateStart);
 		return bst;
 	}
-	
+
 	public static AVLTree<Integer> constructAVL(Integer[] arr) {
 		long populateStart = System.nanoTime();
 		AVLTree<Integer> avl = new AVLTree<Integer>(arr);
 		long populateEnd = System.nanoTime();
-		System.out.printf("AVL Tree constructor() execution time for %d elements is %d nanoseconds\n", arr.length, populateEnd - populateStart);
+		System.out.printf("AVL Tree constructor() execution time for %d elements is %d nanoseconds\n", arr.length,
+				populateEnd - populateStart);
 		return avl;
 	}
 
