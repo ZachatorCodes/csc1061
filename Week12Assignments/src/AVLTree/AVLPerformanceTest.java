@@ -63,17 +63,7 @@ public class AVLPerformanceTest {
 	public static void searchTree(Tree<Integer> tree, Integer[] arr) {
 		long totalSearchTime = 0;
 		if (tree instanceof AVLTree) {
-			AVLTree<Integer> bst = (AVLTree<Integer>) tree;
-			for (int i = 0; i < bst.size(); i++) {
-				long startTime = System.nanoTime();
-				bst.search(arr[i]);
-				long endTime = System.nanoTime();
-				totalSearchTime += (endTime - startTime);
-			}
-			System.out.printf("BST average search execution time for %d elements is %d nanoseconds\n", tree.size(),
-					totalSearchTime / arr.length);
-		} else {
-			BST<Integer> avl = (BST<Integer>) tree;
+			AVLTree<Integer> avl = (AVLTree<Integer>) tree;
 			for (int i = 0; i < avl.size(); i++) {
 				long startTime = System.nanoTime();
 				avl.search(arr[i]);
@@ -81,6 +71,16 @@ public class AVLPerformanceTest {
 				totalSearchTime += (endTime - startTime);
 			}
 			System.out.printf("AVL average search execution time for %d elements is %d nanoseconds\n", tree.size(),
+					totalSearchTime / arr.length);
+		} else {
+			BST<Integer> bst = (BST<Integer>) tree;
+			for (int i = 0; i < bst.size(); i++) {
+				long startTime = System.nanoTime();
+				bst.search(arr[i]);
+				long endTime = System.nanoTime();
+				totalSearchTime += (endTime - startTime);
+			}
+			System.out.printf("BST average search execution time for %d elements is %d nanoseconds\n", tree.size(),
 					totalSearchTime / arr.length);
 		}
 	}
