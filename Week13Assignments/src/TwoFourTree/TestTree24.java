@@ -64,6 +64,10 @@ public class TestTree24 {
     // Traverse tree
     System.out.print("\nPreorder: ");
     tree.preorder();
+    System.out.print("\nPostorder: ");
+    tree.postorder();
+    System.out.print("\nInorder: ");
+    tree.inorder();
     System.out.print("\nThe number of nodes is " + tree.getSize());
     System.out.println();
   }

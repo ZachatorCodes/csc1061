@@ -359,6 +359,12 @@ public class Tree24<E extends Comparable<E>> implements Tree<E> {
 	public void postorder(Tree24Node<E> root) {
 		if (root == null)
 			return;
+		for (int i = 0; i < root.child.size(); i++) {
+			postorder(root.child.get(i));
+		}
+		for (int i = 0; i < root.elements.size(); i++) {
+			System.out.print(root.elements.get(i) + " ");
+		}
 	}
 
 	@Override /** Return true if the tree is empty */
