@@ -346,9 +346,22 @@ public class Tree24<E extends Comparable<E>> implements Tree<E> {
 	}
 
 	public void inorder(Tree24Node<E> root) {
-		if (root == null)
+		if (root == null) {
 			return;
+		}
 
+		if (root.child.size() > 0) {
+			for (int i = 0; i < root.child.size(); i++) {
+				inorder(root.child.get(i));
+				if (i < root.elements.size()) {
+					System.out.print(root.elements.get(i) + " ");
+				}
+			}
+		} else {
+			for (int i = 0; i < root.elements.size(); i++) {
+				System.out.print(root.elements.get(i) + " a");
+			}
+		}
 	}
 
 	/** Postorder traversal from the root */
