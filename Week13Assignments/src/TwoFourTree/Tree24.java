@@ -359,7 +359,7 @@ public class Tree24<E extends Comparable<E>> implements Tree<E> {
 			}
 		} else {
 			for (int i = 0; i < root.elements.size(); i++) {
-				System.out.print(root.elements.get(i) + " a");
+				System.out.print(root.elements.get(i) + " ");
 			}
 		}
 	}
