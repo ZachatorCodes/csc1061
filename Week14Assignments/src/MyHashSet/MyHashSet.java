@@ -230,37 +230,67 @@ public class MyHashSet<E extends Comparable<E>> implements Collection<E> {
 	@Override
 	public boolean addAll(Collection<? extends E> arg0) {
 		// Left as an exercise
-
-		return false;
+		boolean result = false;
+		for (E item : arg0) {
+			if (add(item) == true) {
+				result = true;
+			}
+			;
+		}
+		return result;
 	}
 
 	@Override
 	public boolean containsAll(Collection<?> arg0) {
-		// Left as an exercise
-		return false;
+		boolean hasAll = true;
+		for (Object e : arg0) {
+			if (!contains(e)) {
+				hasAll = false;
+			}
+		}
+		return hasAll;
 	}
 
 	@Override
 	public boolean removeAll(Collection<?> arg0) {
-		// Left as an exercise
-		return false;
+		boolean result = false;
+		for (Object e : arg0) {
+			if (remove(e)) {
+				result = true;
+			}
+		}
+		return result;
 	}
 
 	@Override
 	public boolean retainAll(Collection<?> arg0) {
-		// Left as an exercise
-		return false;
+		boolean result = false;
+		ArrayList<E> list = setToList();
+		for (E e : list) {
+			if (!arg0.contains(e)) {
+				remove(e);
+				result = true;
+			}
+		}
+		return result;
 	}
 
 	@Override
 	public Object[] toArray() {
 		// Left as an exercise
-		return null;
+		ArrayList<E> list = setToList();
+		Object[] array = list.toArray();
+		return array;
 	}
 
 	@Override
 	public <T> T[] toArray(T[] arg0) {
 		// Left as an exercise
-		return null;
+		ArrayList<E> list = setToList();
+		E[] array = (E[]) new Object[list.size()]; // generic hehehe
+		for (int i = 0; i < array.length; i++) {
+			array[i] = list.get(i);
+		}
+		return (T[]) array;
 	}
 }

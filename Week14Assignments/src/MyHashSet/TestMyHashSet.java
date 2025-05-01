@@ -1,5 +1,7 @@
 package MyHashSet;
 
+import java.util.Arrays;
+
 public class TestMyHashSet {
   public static void main(String[] args) {
     // Create a MyHashSet
@@ -13,7 +15,7 @@ public class TestMyHashSet {
     System.out.println("Elements in set: " + set);
     System.out.println("Number of elements in set: " + set.size());
     System.out.println("Is Smith in set? " + set.contains("Smith"));
-
+    
     set.remove("Smith");
     System.out.print("Names in set in uppercase are ");
     for (String s: set)
