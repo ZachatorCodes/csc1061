@@ -160,7 +160,6 @@ class BST<E extends Comparable<E>> {
 			}
 		}
 		return false;
-
 	}
 
 	// TODO fill in this method
