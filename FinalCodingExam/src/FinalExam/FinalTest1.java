@@ -148,11 +148,29 @@ class BST<E extends Comparable<E>> {
 	// TODO fill in this method
 	// Returns true if the element is in the tree
 	public boolean contains(E e) {
+		TreeNode<E> current = root;
+		while (current != null) {
+			if (current.element.equals(e)) {
+				return true;
+			}
+			if (e.compareTo(current.element) > 0) {
+				current = current.right;
+			} else {
+				current = current.left;
+			}
+		}
 		return false;
+
 	}
 
 	// TODO fill in this method
 	static void postorder(TreeNode<?> root) {
+		if (root == null) {
+			return;
+		}
+		postorder(root.left);
+		postorder(root.right);
+		System.out.print(root.element + " ");
 	}
 
 	// Insert element e into the binary tree Return true if the element is inserted
