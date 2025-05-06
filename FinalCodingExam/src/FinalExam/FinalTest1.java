@@ -107,11 +107,18 @@ public class FinalTest1 {
 
 	// TODO fill in these methods
 	static Set<String> depthFirstTraversal(GraphHelper graph, String root) {
-		return null;
+		LinkedHashSet<String> dftSet = new LinkedHashSet<>();
+		dfs(graph, root, dftSet);
+		return dftSet;
 	}
 
 	static Set<String> dfs(GraphHelper graph, String root, LinkedHashSet<String> dftSet) {
-
+		for (Vertex e : graph.getAdjVertices(root)) {
+			if (!dftSet.contains(e.label)) {
+				dftSet.add(e.label);
+				dfs(graph, e.label, dftSet);
+			}
+		}
 		return dftSet;
 	}
 
